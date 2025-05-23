@@ -1,0 +1,48 @@
+.header-row-grid {
+    margin: 40px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-template-rows: 50px;
+    gap: 25px;
+}
+
+.header-row-grid h1,
+.header-row-grid p,
+.header-row-grid a,
+.header-row-grid form {
+    align-self: center;
+}
+
+.header-row-grid p {
+    margin-top: 8px;
+}
+
+.header-row-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    padding: 0 12px;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.header-row-grid form {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+}
+
+.header-row-grid form input[type="text"] {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
