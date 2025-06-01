@@ -1,0 +1,112 @@
+
+
+/* HEADER OF PAGE WITH SEARCH BAR AND HYPERLINK */
+
+.header-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1.25fr 3fr;
+    grid-template-rows: 50px;
+    gap: 25px;
+}
+
+.header-row-grid h1,
+.header-row-grid p,
+.header-row-grid a,
+.header-row-grid form {
+    align-self: center;
+}
+
+.header-row-grid p {
+    margin-top: 8px;
+}
+
+.header-row-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    padding: 0 12px;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.header-row-grid form {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+}
+
+.header-row-grid form input[type="text"] {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
+
+.seperator {
+    margin: 20px 0 20px 0;
+    border: solid 1px #666;
+    border-radius: 1px;
+    width: 100%
+}
+
+
+
+/* GRID PRESETS AND SETUP FOR HEADER AND LIST OF ITEMS */
+
+.preset-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr 2fr 2fr 1.5fr 1fr;
+    grid-template-rows: 50px;
+    gap: 10px; 
+}
+
+.list-items .preset-grid {
+    border: solid black 2px;
+    border-radius: 7px;
+    background-color: white;
+    margin-bottom: 8px;
+}
+
+.list-items .preset-grid input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-left: 20px;
+}
+
+.list-items .item-entry {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* MODEL INFO SECTION OF LIST ITEM */
+
+.model-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.model-info .other {
+    display: flex;
+    flex-direction: row;
+}
+
+.model-info p {
+    font-size: 11px;
+    margin-right: 7px;
+}
+
+.model-info h1 {
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+}

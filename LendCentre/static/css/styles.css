@@ -1,0 +1,99 @@
+/*
+:root {
+    --color-primary: #3464f3;
+    --color-secondary: #fff2ef;
+    --color-accent: #8fabff;
+    --color-light-text: #EBEBEB;
+    --color-text: #1A1A1A;
+    --color-alt-text: #303030;
+}
+*/
+
+:root {
+    --color-primary: #085394;
+    --color-secondary: #fff2ef;
+    --color-accent: #8fabff;
+    --color-light-text: #EBEBEB;
+    --color-text: #1A1A1A;
+    --color-alt-text: #303030;
+    --color-background: #CCCCCC;
+}
+
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    margin: 0;
+    color: var(--color-text)
+}
+
+p {
+    margin: 0;
+    color: var(--color-alt-text)
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+
+.main-container{
+    display: flex;
+    margin-left: 20vw;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px;
+    background-color: var(--color-background);
+}
+
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20vw;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--color-primary);
+    z-index: 100
+}
+
+.navbar-container h1 {
+    margin: 50px;
+    color: var(--color-light-text);
+    white-space: nowrap;
+}
+
+.navbar-container .button-grid {
+    position: relative;
+    top: 150px;
+    display: grid;
+    grid-template-columns: 8.5vw 8.5vw;
+    grid-template-rows: 100px 100px;
+    gap: 20px;
+}
+
+.navbar-container .button-grid a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    transition: background-color ease-in 0.1s;
+}
+
+.navbar-container .button-grid a:hover {
+    background-color: var(--color-accent);
+    transition: background-color ease-in 0.1s;
+}

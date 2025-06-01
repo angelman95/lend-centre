@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/inventory.css">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="main-container">
+
+        <div class="header-row-grid">
+            <h1>Inventory</h1>
+            <p>160 | Total</p>
+            <a href="#">+ Add Item </a>
+            <form action="/search" method="get" class="search-form">
+                <input type="text" name="query" placeholder="Search inventory..." />
+            </form>
+        </div>
+
+        <div class="seperator"></div>
+        
+        <div class="header">
+            <div class="preset-grid">
+                <div></div>
+                <div class="grid-header">Model</div>
+                <div class="grid-header">Brand</div>
+                <div class="grid-header">Category</div>
+                <div class="grid-header">Type</div>
+                <div class="grid-header">Barcode</div>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="list-items">
+            
+            {% for item in inventory %}
+            
+                <div class="preset-grid">
+                    <div class="item-entry"><input type="checkbox" name="features"></div>
+                    <div class="model-info">
+                        <h1>{{ item.Model }}</h1>
+                        <div class="other">
+                            {% if item.Colour != '' %}
+                                <p>Color: {{ item.Colour }}</p>
+                            {% endif %}
+
+                            {% if item.Connectivity != '' %}
+                                <p>Connectivity: {{ item.Connectivity }}</p>
+                            {% endif %}
+
+                            {% if item.Strings != '' %}
+                                <p>Strings: {{ item.Strings }}</p>
+                            {% endif %}
+
+                            {% if item.Handedness != '' %}
+                                <p>Handedness: {{ item.Handedness }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="item-entry">{{ item.Brand }}</div>
+                    <div class="item-entry">{{ item.Item }}</div>
+                    <div class="item-entry">{{ item.Type }}</div>
+                    <div class="item-entry">{{ item.Barcode }}</div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</body>
+</html>
