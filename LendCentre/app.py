@@ -48,6 +48,12 @@ def inventory():
     return render_template('inventory.html', inventory=inventory)
 
 
+# add item page
+@app.route('/add-item')
+def add_item():
+    return render_template('add-item.html')
+
+
 # current loans page
 @app.route('/current')
 def current():
