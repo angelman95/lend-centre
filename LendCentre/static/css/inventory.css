@@ -68,6 +68,10 @@
     gap: 10px; 
 }
 
+img {
+    margin-left: 11px;
+}
+
 .list-items .preset-grid {
     border: solid black 2px;
     border-radius: 7px;

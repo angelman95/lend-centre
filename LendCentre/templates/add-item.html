@@ -9,10 +9,10 @@
 
     <h1>Add new item:</h1>
     <form action="/add-item" method="POST">
-        <label for="Item">Item</label>
+        <label for="Item">Category</label>
         <input type="text" id="Item" name="Item">
 
-        <label for="Type">Description:</label>
+        <label for="Type">Type:</label>
         <input type="text" id="Type" name="Type">
 
         <label for="Brand">Brand:</label>
@@ -30,11 +30,13 @@
         <label for="Strings">Strings:</label>
         <input type="text" id="Strings" name="Strings">
 
-        <label for="Model">Model:</label>
-        <input type="text" id="Model" name="Model">
+        <label for="Handedness">Handedness:</label>
+        <input type="text" id="Handedness" name="Handedness">
 
+        <label for="Barcode">Barcode:</label>
+        <input type="text" id="Barcode" name="Barcode" required>
+
+        <button type="submit">Continue</button>
     </form>
 </body>
 </html>
-
-item type brand model colour connectivity strings handiness quantity barcode

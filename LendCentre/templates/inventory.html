@@ -13,7 +13,7 @@
 
         <div class="header-row-grid">
             <h1>Inventory</h1>
-            <p>160 | Total</p>
+            <p>{{ inventory_count }} | Total</p>
             <a href="/add-item">+ Add Item </a>
             <form action="/search" method="get" class="search-form">
                 <input type="text" name="query" placeholder="Search inventory..." />
@@ -24,7 +24,15 @@
         
         <div class="header">
             <div class="preset-grid">
-                <div></div>
+
+                
+                <form id="delete-form" method="POST" action="{{ url_for('delete_items') }}">
+                    <button type="submit" id="delete-btn" style="display: none; background: none; border: none; cursor: pointer;" title="Delete selected">
+                        <img src="{{ url_for('static', filename='images/icons8-delete-30.png') }}" alt="Delete">
+                    </button>
+                </form>
+               
+
                 <div class="grid-header">Model</div>
                 <div class="grid-header">Brand</div>
                 <div class="grid-header">Category</div>
@@ -36,39 +44,81 @@
 
         <div class="list-items">
             
-            {% for item in inventory %}
-            
-                <div class="preset-grid">
-                    <div class="item-entry"><input type="checkbox" name="features"></div>
-                    <div class="model-info">
-                        <h1>{{ item.Model }}</h1>
-                        <div class="other">
-                            {% if item.Colour != '' %}
-                                <p>Color: {{ item.Colour }}</p>
-                            {% endif %}
+            {% if inventory %}
 
-                            {% if item.Connectivity != '' %}
-                                <p>Connectivity: {{ item.Connectivity }}</p>
-                            {% endif %}
+                {% for item in inventory %}
+                
+                    <div class="preset-grid">
+                        <div class="item-entry"><input type="checkbox" name="selected_items" value="{{ item.id }}" class="item-checkbox"></div>
+                        <div class="model-info">
+                            <h1>{{ item.Model }}</h1>
+                            <div class="other">
+                                {% if item.Colour != '' %}
+                                    <p>Color: {{ item.Colour }}</p>
+                                {% endif %}
 
-                            {% if item.Strings != '' %}
-                                <p>Strings: {{ item.Strings }}</p>
-                            {% endif %}
+                                {% if item.Connectivity != '' %}
+                                    <p>Connectivity: {{ item.Connectivity }}</p>
+                                {% endif %}
 
-                            {% if item.Handedness != '' %}
-                                <p>Handedness: {{ item.Handedness }}</p>
-                            {% endif %}
+                                {% if item.Strings != '' %}
+                                    <p>Strings: {{ item.Strings }}</p>
+                                {% endif %}
+
+                                {% if item.Handedness != '' %}
+                                    <p>Handedness: {{ item.Handedness }}</p>
+                                {% endif %}
+                            </div>
                         </div>
+                        <div class="item-entry">{{ item.Brand }}</div>
+                        <div class="item-entry">{{ item.Item }}</div>
+                        <div class="item-entry">{{ item.Type }}</div>
+                        <div class="item-entry">{{ item.Barcode }}</div>
                     </div>
-                    <div class="item-entry">{{ item.Brand }}</div>
-                    <div class="item-entry">{{ item.Item }}</div>
-                    <div class="item-entry">{{ item.Type }}</div>
-                    <div class="item-entry">{{ item.Barcode }}</div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p>No items found.</p>
+            {% endif %}
+            
         </div>
 
     </div>
+
+<script>
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+    const deleteBtn = document.getElementById('delete-btn');
+    const deleteForm = document.getElementById('delete-form');
+
+    // Toggle delete button visibility
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+            const anyChecked = [...checkboxes].some(box => box.checked);
+            deleteBtn.style.display = anyChecked ? 'inline-block' : 'none';
+        });
+    });
+
+    // On submit, dynamically add hidden inputs for checked boxes
+    deleteForm.addEventListener('submit', function(e) {
+        if (!confirm('Are you sure you want to delete the selected items?')) {
+            e.preventDefault();
+            return;
+        }
+
+        // Remove old hidden inputs if any
+        document.querySelectorAll('.dynamic-hidden').forEach(el => el.remove());
+
+        checkboxes.forEach(cb => {
+            if (cb.checked) {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'selected_items';
+                hiddenInput.value = cb.value;
+                hiddenInput.classList.add('dynamic-hidden');
+                deleteForm.appendChild(hiddenInput);
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
